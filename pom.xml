@@ -10,7 +10,7 @@
   </parent>
   <groupId>com.ikoyski</groupId>
   <artifactId>webtools-bin-lookup</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>webtools-bin-lookup</name>
   <description>webtools-bin-lookup</description>
   <scm>
