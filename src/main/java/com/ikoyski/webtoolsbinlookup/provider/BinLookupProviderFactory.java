@@ -4,11 +4,7 @@ public class BinLookupProviderFactory {
 
 	public static final String PROVIDER_BINLIST = "BinList";
 
-	private BinLookupProviderFactory() {
-		super();
-	}
-
-	public static BinLookupProviderBaseInterface createBinLookupProvider(String type) {
+	public BinLookupProviderBaseInterface createBinLookupProvider(String type) {
 		BinLookupProviderBaseInterface binLookupProvider;
 		if (PROVIDER_BINLIST.equals(type)) {
 			// using https://lookup.binlist.net/

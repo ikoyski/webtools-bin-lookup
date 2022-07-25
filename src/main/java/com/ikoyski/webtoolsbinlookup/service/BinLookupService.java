@@ -10,7 +10,8 @@ import com.ikoyski.webtoolsbinlookup.provider.BinLookupProviderFactory;
 public class BinLookupService {
 
 	public BinLookupResponse getBinInfo(String bin) {
-		BinLookupProviderBaseInterface binLookupProvider = BinLookupProviderFactory
+		BinLookupProviderFactory binLookupProviderFactory = new BinLookupProviderFactory();
+		BinLookupProviderBaseInterface binLookupProvider = binLookupProviderFactory
 				.createBinLookupProvider(BinLookupProviderFactory.PROVIDER_BINLIST);
 		return binLookupProvider.getBinInfo(bin);
 	}
