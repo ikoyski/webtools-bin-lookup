@@ -4,16 +4,17 @@ public class BinLookupProviderFactory {
 
 	public static final String PROVIDER_BINLIST = "BinList";
 
+	private BinLookupProviderFactory() {
+		super();
+	}
+
 	public static BinLookupProviderBaseInterface createBinLookupProvider(String type) {
 		BinLookupProviderBaseInterface binLookupProvider;
-		switch (type) {
-		case PROVIDER_BINLIST:
+		if (PROVIDER_BINLIST.equals(type)) {
 			// using https://lookup.binlist.net/
-			binLookupProvider = new BinLookupProvider_BinList();
-			break;
-		default:
+			binLookupProvider = new BinLookupProviderBinList();
+		} else {
 			throw new IllegalArgumentException("No such provider.");
-
 		}
 		return binLookupProvider;
 	}
