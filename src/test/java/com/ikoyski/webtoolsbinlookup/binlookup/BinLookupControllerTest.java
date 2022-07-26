@@ -12,7 +12,7 @@ import com.ikoyski.webtoolsbinlookup.controller.BinLookupController;
 import com.ikoyski.webtoolsbinlookup.service.BinLookupService;
 
 @SpringBootTest
-public class BinLookupControllerTest {
+class BinLookupControllerTest {
 
 	@Autowired
 	private BinLookupController binLookupController;

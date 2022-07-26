@@ -15,7 +15,7 @@ import com.ikoyski.webtoolsbinlookup.provider.BinLookupProviderBaseInterface;
 import com.ikoyski.webtoolsbinlookup.service.BinLookupService;
 
 @SpringBootTest
-public class BinLookupServiceTest {
+class BinLookupServiceTest {
 
 	@Autowired
 	private BinLookupService binLookupService;
