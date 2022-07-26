@@ -11,8 +11,6 @@ import com.ikoyski.webtoolsbinlookup.dto.BinLookupResponse;
 
 public class BinLookupProviderBinList implements BinLookupProviderBaseInterface {
 
-	public static final String ERROR_INVALID_URI = "invalid uri";
-
 	@Override
 	public BinLookupResponse getBinInfo(String bin) {
 		BinLookupResponse binLookupResponse = null;
@@ -21,7 +19,8 @@ public class BinLookupProviderBinList implements BinLookupProviderBaseInterface 
 			RestTemplate restTemplate = new RestTemplate();
 			binLookupResponse = restTemplate.getForObject(uri, BinLookupResponse.class);
 		} catch (URISyntaxException e) {
-			throw new ResponseStatusException(HttpStatus.CONFLICT, ERROR_INVALID_URI, null);
+			throw new ResponseStatusException(HttpStatus.CONFLICT, BinLookupProviderBaseInterface.ERROR_INVALID_URI,
+					null);
 		}
 		return binLookupResponse;
 	}
