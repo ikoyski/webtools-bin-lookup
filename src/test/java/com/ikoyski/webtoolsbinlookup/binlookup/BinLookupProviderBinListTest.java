@@ -1,7 +1,5 @@
 package com.ikoyski.webtoolsbinlookup.binlookup;
 
-import java.net.URISyntaxException;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
