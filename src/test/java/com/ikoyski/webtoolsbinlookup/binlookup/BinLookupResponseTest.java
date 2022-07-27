@@ -10,7 +10,7 @@ import com.ikoyski.webtoolsbinlookup.dto.BinLookupCountry;
 import com.ikoyski.webtoolsbinlookup.dto.BinLookupResponse;
 
 @SpringBootTest
-public class BinLookupResponseTest {
+class BinLookupResponseTest {
 
 	@Test
 	@DisplayName("BinLookupResponseTest.binLookupResponseTestSuccess()")
