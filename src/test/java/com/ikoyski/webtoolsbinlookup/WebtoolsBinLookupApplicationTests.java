@@ -18,4 +18,5 @@ class WebtoolsBinLookupApplicationTests {
 		// when
 		WebtoolsBinLookupApplication.main(new String[] {});
 	}
+	
 }
