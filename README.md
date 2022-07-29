@@ -109,7 +109,7 @@ This should return something like
 
 application.properties
 
-## Swagger / Open API
+## Swagger / OpenAPI
 
 openapi.yml
 
