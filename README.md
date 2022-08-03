@@ -111,7 +111,7 @@ application.properties
 
 ## Swagger / OpenAPI
 
-openapi.yml
+openapi.yaml
 
 ## SonarCloud
 
