@@ -1,5 +1,6 @@
 package com.ikoyski.webtoolsbinlookup.controller;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ public class BinLookupController {
 	}
 
 	@GetMapping(path = "api/v1/binLookup/{bin}")
+	@Cacheable(value = "binInfo", key = "#bin")
 	public BinLookupResponse getBinInfo(@PathVariable("bin") String bin) {
 		return binLookupService.getBinInfo(bin);
 	}
