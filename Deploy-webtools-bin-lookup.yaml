@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webtools-bin-lookup
+spec:
+  selector:
+    matchLabels:
+      app: webtools-bin-lookup
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webtools-bin-lookup
+    spec:
+      containers:
+      - name: webtools-bin-lookup
+        image: "ikoyski/webtools-bin-lookup:latest"
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8093
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webtools-bin-lookup
+spec:
+  selector:
+    app: webtools-bin-lookup
+  ports:
+  - protocol: "TCP"
+    port: 8093
+    targetPort: 8093
+  type: NodePort
+  

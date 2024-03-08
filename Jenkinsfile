@@ -4,39 +4,49 @@ pipeline {
         maven 'Maven-3.9.6'
     }
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('Dockerhub-Credentials')
+        DOCKERHUB_CREDENTIALS = credentials('Dockerhub-Credentials') //username and password
+        K8S_HOST_IP = credentials('K8s-Host-IP') //username and ip
+            
+        DOCKERHUB_IMAGE = 'ikoyski/webtools-bin-lookup:latest'        
+        DEPLOYMENT_FILENAME = 'Deploy-webtools-bin-lookup.yaml'
     }
     stages {
-        stage('Checkout from Git') {
-            steps {
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ikoyski/webtools-bin-lookup.git']])
-            }
-        }
-        stage('Maven Build') {
-            steps {
-                sh 'mvn clean install'
-            }
-        }
-        stage('Build Docker Image') {
+        stage('Git Stuff') {
             steps {
                 script {
-                    sh 'docker build -t ikoyski/webtools-bin-lookup:latest .'
+                	checkout scmGit(
+                		branches: [[name: '*/master']], 
+                		extensions: [], 
+                		userRemoteConfigs: [[url: 'https://github.com/ikoyski/webtools-bin-lookup.git']]
+                	)
                 }
             }
         }
-        stage('Login to Docker Hub') {
+        stage('Maven Stuff') {
             steps {
                 script {
+                	sh 'mvn clean install'
+                }
+            }
+        }
+        stage('Docker Stuff') {
+            steps {
+                script {
+                    sh 'docker build -t $DOCKERHUB_IMAGE .'
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    sh 'docker push $DOCKERHUB_IMAGE'
                 }
             }
         }
-        stage('Push Image to Docker Hub') {
-            steps {
-                script {
-                    sh 'docker push ikoyski/webtools-bin-lookup:latest'
-                }
-            }
+        stage('K8s Stuff') {
+        	steps {        		
+        		script {
+        			sshagent(['K8s-Host-User-With-Key']) {
+						sh 'scp -o StrictHostKeyChecking=no $DEPLOYMENT_FILENAME $K8S_HOST_IP_USR@$K8S_HOST_IP_PSW:/home/ikoyski'
+						sh 'ssh -o StrictHostKeyChecking=no $K8S_HOST_IP_USR@$K8S_HOST_IP_PSW kubectl apply -f $DEPLOYMENT_FILENAME'
+		        	}
+				}
+        	}
         }
     }
 }
