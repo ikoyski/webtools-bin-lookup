@@ -76,10 +76,16 @@ This endpoint will return something like the following.
 }
 ```
 
-Hit the functional endpoint (**Server**)
+Hit the functional endpoint (**localhost**)
 
 ```
-curl --location --request GET 'http://localhost:8080/api/v1/binLookup/542458'
+curl --location --request GET 'http://localhost:8080/api/v1/binLookup/546616'
+```
+
+Hit the functional endpoint (**render**)
+
+```
+curl --location --request GET 'https://webtools-bin-lookup.onrender.com/api/v1/binLookup/546616'
 ```
 
 This should return something like
@@ -88,19 +94,19 @@ This should return something like
 {
     "scheme": "mastercard",
     "type": "credit",
-    "brand": "Standard",
+    "brand": "World Mastercard Card",
     "country": {
-        "numeric": "608",
-        "alpha2": "PH",
-        "name": "Philippines",
-        "currency": "PHP",
-        "latitude": "13",
-        "longitude": "122"
+        "numeric": "840",
+        "alpha2": "US",
+        "name": "United States of America (the)",
+        "currency": "USD",
+        "latitude": "38",
+        "longitude": "-97"
     },
     "bank": {
-        "name": "BANK OF THE PHILIPPINE ISLANDS",
-        "url": "www.bpiexpressonline.com",
-        "phone": "63-2-818-5541-48 OR 800-188-89100"
+        "name": "Citibank N.A.",
+        "url": null,
+        "phone": null
     }
 }
 ```
