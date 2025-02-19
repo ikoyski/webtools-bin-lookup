@@ -1,0 +1,23 @@
+server:
+  port: 8093
+
+spring:
+  application:
+    name: webtools-bin-lookup
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  info:
+    git:
+      mode: full
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761
+
+provider:
+ default: BinList
