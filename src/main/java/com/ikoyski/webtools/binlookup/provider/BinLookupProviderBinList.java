@@ -106,7 +106,7 @@ public class BinLookupProviderBinList implements BinLookupProviderBaseInterface 
 			this.bank = bank;
 		}
 
-		private static class BinListCountry {
+		public static class BinListCountry {
 
 			private String numeric;
 			private String alpha2;
@@ -165,7 +165,7 @@ public class BinLookupProviderBinList implements BinLookupProviderBaseInterface 
 
 		}
 
-		private static class BinListBank {
+		public static class BinListBank {
 
 			private String name;
 			private String url;
