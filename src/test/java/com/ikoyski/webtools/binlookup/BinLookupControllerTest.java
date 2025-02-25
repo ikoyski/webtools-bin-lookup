@@ -6,12 +6,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import com.ikoyski.webtools.binlookup.controller.BinLookupController;
 import com.ikoyski.webtools.binlookup.service.BinLookupService;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class BinLookupControllerTest {
 
 	@Autowired
