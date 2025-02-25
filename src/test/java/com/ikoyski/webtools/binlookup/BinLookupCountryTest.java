@@ -4,10 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.ikoyski.webtools.binlookup.dto.BinLookupCountry;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class BinLookupCountryTest {
 
 	@Test
